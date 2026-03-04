@@ -1,0 +1,30 @@
+# Datasets y archivos pesados
+*.csv
+*.h5
+*.pkl
+*.npy
+*.npz
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Entornos virtuales
+*.env
+venv/
+.venv/
+env/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
