@@ -1,0 +1,63 @@
+Apertura: miércoles, 4 de marzo de 2026, 14:27
+Cierre: miércoles, 11 de marzo de 2026, 23:59
+Taller Evaluativo 1: Redes Multicapa y Diagnóstico de Modelos
+
+Especialización en Ciencia de Datos e Inteligencia Artificial - Universidad de Medellín Módulo: Deep Learning (Semana 1)
+
+📌 Objetivo del Taller
+
+Construir desde cero una Red Neuronal Multicapa (MLP) utilizando Keras para resolver un problema de clasificación binaria. El enfoque principal está en la correcta preparación de los datos, la experimentación con la arquitectura, y el diagnóstico visual y mitigación del sobreajuste (Overfitting).
+
+🏢 Contexto de Negocio: Retención de Clientes (Telco Churn)
+
+Imaginemos que somos el equipo de analítica de una gran empresa de telecomunicaciones. El departamento de marketing está preocupado porque muchos clientes están cancelando sus servicios (Churn). Adquirir un nuevo cliente es mucho más costoso que retener a uno actual, por lo que nos han pedido crear un modelo de Deep Learning que prediga qué clientes tienen alta probabilidad de irse, basándose en su comportamiento histórico.
+
+🛠️ Paso 1: Obtención y Preparación de Datos
+
+Para este taller, todos los equipos trabajarán con el mismo conjunto de datos oficial.
+
+Dataset: Telco Customer Churn (IBM)
+Enlace de descarga (Kaggle): Telco Customer Churn Dataset
+Variable a predecir (Target): Columna Churn (Yes = 1 / No = 0).
+Tareas de preparación:
+
+Inicien un notebook en blanco, descarguen el archivo CSV y cárguenlo usando pandas.
+Realicen el preprocesamiento necesario (lo que aprendieron en asignaturas pasadas):
+Manejo de valores nulos (ojo con la columna TotalCharges).
+Codificación de variables categóricas (ej. One-Hot Encoding para el tipo de contrato, método de pago, etc.).
+Escalado de variables numéricas (vital para que la red neuronal converja rápido).
+Dividan el conjunto de datos estrictamente en tres partes: Entrenamiento (Train), Validación (Validation) y Prueba (Test). Sugerencia de proporción: 70% / 15% / 15%.
+🧟 Paso 2: Provocando el Sobreajuste (El Modelo "Frankenstein")
+
+Para entender un problema, primero hay que verlo ocurrir. Su misión aquí es crear una red neuronal que sea demasiado compleja para este dataset.
+
+Tareas:
+
+Construyan en Keras un modelo secuencial con al menos 4 capas ocultas densas, utilizando un número alto de neuronas (ej. 128 o 256 por capa) y activación relu.
+Entrenen el modelo por una cantidad exagerada de épocas (ej. 150 o 200). Asegúrense de incluir los datos de validación en el entrenamiento (validation_data).
+Grafiquen las curvas de aprendizaje: Loss (Pérdida) y Accuracy (Exactitud) superponiendo las líneas de Train y Validation.
+Análisis (Responder en celda de texto): Basándose en la gráfica, ¿en qué época exacta consideran que el modelo dejó de aprender patrones generales y empezó a memorizar los datos de entrenamiento? ¿Qué evidencia visual respalda esto?
+🏗️ Paso 3: Búsqueda de la Arquitectura Óptima
+
+Ahora deben actuar como Científicos de Datos y arreglar el modelo anterior para que generalice correctamente sin sobreajustarse.
+
+Tareas:
+
+Experimenten reduciendo la complejidad de la red (cantidad de capas y neuronas). Prueben al menos 3 arquitecturas diferentes.
+Entrenen cada versión y observen sus curvas.
+Análisis (Responder en celda de texto): Presenten una tabla resumen con sus 3 experimentos indicando: Arquitectura usada, Accuracy en Validación, y si lograron eliminar el sobreajuste. Justifiquen cuál es su modelo ganador.
+💼 Paso 4: Evaluación de Negocio en el Mundo Real
+
+Tomen su "modelo ganador" del Paso 3 y enfréntenlo a los datos de Prueba (Test Set), los cuales el modelo jamás ha visto.
+
+Tareas:
+
+Obtengan las predicciones y generen la Matriz de Confusión.
+Análisis (Responder en celda de texto): Analicen el impacto de los errores de su modelo desde la perspectiva del negocio:
+Identifiquen cuántos Falsos Positivos (el modelo dijo que se iba, pero se quedó) y Falsos Negativos (el modelo dijo que se quedaba, pero se fugó) tuvieron.
+Si la empresa les da un presupuesto de $50.000 COP para ofrecer un bono de descuento a cada cliente que el modelo marque como "Propenso a fuga", ¿qué error le cuesta más dinero a la empresa: el Falso Positivo o el Falso Negativo? Justifiquen detalladamente su respuesta y expliquen por qué fijarse solo en el Accuracy general es peligroso.
+ 
+
+📦 Entregable
+
+Un único archivo .ipynb (Google Colab o similar) por grupo. Asegúrense de que todas las celdas estén ejecutadas (con las gráficas de curvas y matrices visibles) y que los análisis solicitados estén redactados de forma clara, con buena ortografía y argumentación en celdas de texto (Markdown).
